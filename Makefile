@@ -9,9 +9,8 @@ all: clean d64 run
 original: clean d64_orig run_orig
 
 morpheus.prg: src/morpheus.asm src/data.asm
-	64tass -Wall -Wno-implied-reg --cbm-prg -o bin/mp.prg -L bin/list-co1.txt -l bin/labels.txt src/morpheus.asm
-	exomizer sfx 0x0900 bin/mp.prg -n -o bin/morpheus.prg
-	md5sum bin/mp.prg bin/mp-bench.prg
+	64tass -Wall -Wno-implied-reg --cbm-prg -o bin/morpheus.prg -L bin/list-co1.txt -l bin/labels.txt src/morpheus.asm
+	md5sum bin/morpheus.prg bin/morpheus-bench.prg
 
 d64: morpheus.prg
 	$(C1541) -format "morpheus,rq" d64 $(D64_IMAGE)
